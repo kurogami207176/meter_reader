@@ -12,8 +12,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class NmiFileToNmiTest {
-    private final NmiFileToNmi subject = new NmiFileToNmi();
+class NmiFileToNmiConverterTest {
+    private final NmiFileToNmiConverter subject = new NmiFileToNmiConverter();
 
     @Test
     void testConvert() {

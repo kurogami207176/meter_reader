@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class NmiFileToNmi {
+public class NmiFileToNmiConverter {
     public List<Nmi> convert(NmiFile nmiFile) {
         List<Nmi> nmiList = new ArrayList<>();
         for(int i = 0; i < nmiFile.intervalData().size(); i++) {

@@ -1,25 +1,20 @@
 package com.alaindroid.test.flo;
 
-import com.alaindroid.test.flo.model.IntervalData;
-import com.alaindroid.test.flo.model.NmiFile;
 import com.alaindroid.test.flo.reader.Nmi12ReaderGenerator;
-import com.alaindroid.test.flo.service.NmiFileToNmi;
+import com.alaindroid.test.flo.service.NmiFileToNmiConverter;
 import com.alaindroid.test.flo.service.NmiInsertGenerator;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.System.out;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MainServiceTest {
     MainService subject = new MainService(
             new Nmi12ReaderGenerator(),
-            new NmiFileToNmi(),
+            new NmiFileToNmiConverter(),
             new NmiInsertGenerator("meter_readings")
     );
 
@@ -40,7 +35,6 @@ class MainServiceTest {
     private List<String> ingest(String filePath) {
         long start = System.currentTimeMillis();
         List<String> stmts = subject.generateInsertSqls(filePath);
-//        stmts.forEach(out::println);
         long duration = System.currentTimeMillis() - start;
         out.println("Duration " + duration + "ms");
         return stmts;
